@@ -12,9 +12,10 @@
     </head>
     <body>
         <div class="container">
+        <!-- 페이지 내용을 컨테이너로 감싸기 -->
             <h1>TODO 목록 앱</h1>
             <p>
-                <a href=""><i class="bi-plus"></i>Add Todo</a> 
+                <a href="{% url 'todo_post' %}"><i class="bi-plus"></i>Add Todo</a> 
                 <!-- 각 태그마다 class(CSS의 기본 작성 단위)를 작성, class의 이름은 bootstrap이 미리 정의해놓은 값임 -->
                 <a href="" class="btn btn-primary" style="float:right">완료한 TODO 목록</a>
             </p>
@@ -35,3 +36,4 @@
         </div>
     </body>
 </html>
+
