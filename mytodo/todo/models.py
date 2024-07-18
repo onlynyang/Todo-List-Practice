@@ -11,7 +11,7 @@ class Todo(models.Model):
     important = models.BooleanField(default=False)
 
     def __str__(self): # 객체가 문자열로 표현될 때 반환할 값을 정의
-        return self.title # title 필드를 반환한다
+        return self.title # title 필드를 반환한다 => 예를들어 관리자 페이지에서 Todo 갳페 목록을 볼 때, title로 표시됨
     
 # CharField
 # 타입: 문자열 (짧은 텍스트)
