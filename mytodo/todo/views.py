@@ -23,6 +23,18 @@ def todo_post(request):
         form = TodoForm() # POST요청이 아니면 빈 TodoForm 인스턴스를 생성해서 폼을 초기화 = 폼을 처음 로드할 때 
     return render(request, 'todo/todo_post.html', {'form': form})
 
+def todo_edit(request, pk):
+    todo = Todo.objects.get(id=pk)
+    if request.method == "POST":
+        form = TodoForm(request.POST, instance=todo) # 제출된 데이터로 폼 초기화
+        if form.is_valid():
+            todo = form.save(commit=False)
+            todo.save()
+            return redirect('todo_list')
+    else:
+        form = TodoForm(instance=todo) # 기존 데이터를 폼에 미리 채워줌
+    return render(request, 'todo/todo_post.html', {'form': form})
+
 
 # request : 요청을 담는 객체 생성
 # request.method: HTTP 요청의 메서드(GET, POST 등)
