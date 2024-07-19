@@ -35,6 +35,16 @@ def todo_edit(request, pk):
         form = TodoForm(instance=todo) # 기존 데이터를 폼에 미리 채워줌
     return render(request, 'todo/todo_post.html', {'form': form})
 
+def done_list(request):
+    dones = Todo.objects.filter(complete=True)
+    return render(request, 'todo/done_list.html', {'dones':dones})
+
+def todo_done(request, pk):
+    todo = Todo.objects.get(id=pk)
+    todo.complete = True
+    todo.save()
+    return redirect('todo_list')
+
 
 # request : 요청을 담는 객체 생성
 # request.method: HTTP 요청의 메서드(GET, POST 등)
